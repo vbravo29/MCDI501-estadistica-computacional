@@ -2,8 +2,8 @@
 
 Magíster en Ciencia de Datos e Inteligencia Artificial, Universidad Andrés Bello.
 
-Proyecto del curso basado en el dataset Framingham Heart Study, cuyo objetivo es analizar
-el riesgo de enfermedad coronaria a 10 años (`TenYearCHD`).
+Proyecto del curso sobre el dataset Framingham Heart Study. El objetivo es analizar qué
+factores se asocian al riesgo de desarrollar enfermedad coronaria en 10 años (`TenYearCHD`).
 
 ## Integrantes
 
@@ -11,14 +11,29 @@ el riesgo de enfermedad coronaria a 10 años (`TenYearCHD`).
 - 
 - 
 
-## Contenido
+## Estructura
 
-- `data/framingham.csv`: dataset original ([Kaggle](https://www.kaggle.com/datasets/dileep070/heart-disease-prediction-using-logistic-regression)).
-- `sumativa-1/`: análisis exploratorio e inferencial (notebook e informe).
+```
+data/
+  framingham.csv           datos originales (4.240 filas, 16 variables)
+  framingham_limpio.csv    datos después de la limpieza
+sumativa-1/
+  01_datos_descriptiva.ipynb   calidad de datos, limpieza y estadística descriptiva
+  02_bivariado_ic.ipynb        análisis bivariado e intervalos de confianza
+  03_hipotesis.ipynb           pruebas de hipótesis
+  figuras/                     gráficos generados por los notebooks
+```
+
+Fuente de los datos: [Kaggle - Framingham Heart Study](https://www.kaggle.com/datasets/dileep070/heart-disease-prediction-using-logistic-regression).
 
 ## Ejecución
+
+Requiere Python 3.10 o superior.
 
 ```bash
 pip install -r requirements.txt
 jupyter notebook
 ```
+
+Ejecutar `01_datos_descriptiva.ipynb` antes que los demás, ya que genera `framingham_limpio.csv`.
+Cada notebook debe ejecutarse completo desde el inicio (Restart & Run All).
