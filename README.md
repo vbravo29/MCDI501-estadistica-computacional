@@ -7,9 +7,11 @@ factores se asocian al riesgo de desarrollar enfermedad coronaria en 10 años (`
 
 ## Integrantes
 
-- 
-- 
-- 
+- **Pendiente:** completar nombres y apellidos de los 3 a 4 integrantes antes de la entrega.
+
+## Repositorio
+
+https://github.com/vbravo29/MCDI501-estadistica-computacional
 
 ## Estructura
 
@@ -28,7 +30,8 @@ Fuente de los datos: [Kaggle - Framingham Heart Study](https://www.kaggle.com/da
 
 ## Ejecución
 
-Requiere Python 3.10 o superior.
+Requiere Python 3.11 o superior. Las versiones exactas validadas se encuentran en
+`requirements.txt`.
 
 ```bash
 pip install -r requirements.txt
@@ -36,4 +39,8 @@ jupyter notebook
 ```
 
 Ejecutar `01_datos_descriptiva.ipynb` antes que los demás, ya que genera `framingham_limpio.csv`.
+Luego ejecutar `02_bivariado_ic.ipynb` y finalmente `03_hipotesis.ipynb`.
 Cada notebook debe ejecutarse completo desde el inicio (Restart & Run All).
+
+Los análisis que contienen valores faltantes usan casos disponibles e informan el tamaño
+muestral efectivo. Los archivos de datos originales no deben modificarse.
