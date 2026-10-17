@@ -1,13 +1,4 @@
-"""Funciones y constantes comunes de la Sumativa 2.
-
-Todos los notebooks de S2 importan este módulo para usar la misma semilla, el mismo
-número de remuestras, las mismas rutas y los resultados de referencia de la Sumativa 1.
-
-Uso desde un notebook ubicado en S2/:
-
-    from utils_s2 import *
-    df = cargar_datos()
-"""
+"""Constantes, resultados de referencia de la S1 y funciones comunes de la Sumativa 2."""
 
 from __future__ import annotations
 
@@ -19,12 +10,9 @@ import pandas as pd
 import seaborn as sns
 from scipy import stats
 
-# ---------------------------------------------------------------------------
-# Parámetros globales (no cambiar sin avisar al equipo)
-# ---------------------------------------------------------------------------
-SEED = 42          # semilla común para toda la S2
+SEED = 42
 B = 10_000         # remuestras bootstrap, permutaciones e iteraciones Monte Carlo
-ALPHA = 0.05       # nivel de significancia (mismo de la S1)
+ALPHA = 0.05
 
 RAIZ = Path(__file__).resolve().parent.parent
 DATA = RAIZ / "data"
@@ -53,10 +41,7 @@ NOMBRES = {
 }
 NUM = list(NOMBRES)
 
-# ---------------------------------------------------------------------------
-# Resultados de la Sumativa 1 que se validan en la S2 (informe S1, tablas 4 y 5,
-# sección 2.2 y sección 4). Citar siempre estos valores al comparar.
-# ---------------------------------------------------------------------------
+# Resultados de la Sumativa 1 que se validan en la S2
 RESULTADOS_S1 = {
     # Tabla 5: estimaciones puntuales e IC 95 %
     "ic": {
@@ -89,7 +74,7 @@ RESULTADOS_S1 = {
         ("age", "sysBP"): 0.39,
         ("BMI", "diaBP"): 0.37,
     },
-    # Tasas por grupo (Figura 4 de la S1), útiles para Monte Carlo
+    # Figura 4 de la S1: tasas de CHD por grupo
     "tasas_chd_%": {
         "global": 15.19,
         "hombres": 18.8, "mujeres": 12.4,
@@ -97,12 +82,15 @@ RESULTADOS_S1 = {
         "diabetes": 36.7, "sin_diabetes": 14.6,
     },
     "prevalencias_%": {"hipertension": 31.1, "diabetes": 2.6, "fumadores": 49.4, "hombres": 42.9},
+    # Sección 4.2: tasa de CHD por tramo de edad y tabaquismo
+    "tasas_tramo_edad_%": {
+        "≤ 45":  {"fumadores": 8.35,  "no_fumadores": 4.12,  "n_fumadores": 958, "n_no_fumadores": 631},
+        "46-55": {"fumadores": 18.59, "no_fumadores": 13.06, "n_fumadores": 721, "n_no_fumadores": 758},
+        "> 55":  {"fumadores": 28.61, "no_fumadores": 24.60, "n_fumadores": 416, "n_no_fumadores": 756},
+    },
 }
 
 
-# ---------------------------------------------------------------------------
-# Datos, figuras y tablas
-# ---------------------------------------------------------------------------
 def cargar_datos(limpio: bool = True) -> pd.DataFrame:
     """Carga el dataset de la S1 (por defecto la versión limpia, con cigsPerDay imputado)."""
     archivo = "framingham_limpio.csv" if limpio else "framingham.csv"
@@ -131,9 +119,6 @@ def guardar_tabla(tabla: pd.DataFrame, nombre: str) -> pd.DataFrame:
     return tabla
 
 
-# ---------------------------------------------------------------------------
-# Remuestreo y simulación
-# ---------------------------------------------------------------------------
 def ic_bootstrap(muestras, estadistico, metodo: str = "BCa", n_resamples: int = B,
                  confianza: float = 0.95, paired: bool = False, vectorized: bool = True,
                  seed: int = SEED):
@@ -160,8 +145,7 @@ def ic_bootstrap(muestras, estadistico, metodo: str = "BCa", n_resamples: int = 
 def p_valor_permutacion(observado: float, nula: np.ndarray, alternativa: str = "dos-colas") -> float:
     """Valor p de permutación con la corrección (k + 1) / (B + 1).
 
-    Con B = 10.000 el menor valor p posible es 1/10.001 ≈ 0,0001, por lo que un
-    resultado así debe informarse como "p < 0,001" o "p ≤ 1/(B+1)".
+    Con B = 10.000 el menor valor p posible es 1/10.001.
     """
     nula = np.asarray(nula)
     if alternativa == "dos-colas":
