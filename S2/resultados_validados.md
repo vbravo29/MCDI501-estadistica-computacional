@@ -59,7 +59,31 @@ Fuente: `05_robustez.ipynb`.
 
 Fuente: `04_montecarlo.ipynb`.
 
-TODO: casos evitados por escenario, cobertura simulada del IC t y entradas más sensibles.
+**Escenario A, programa de control de la hipertensión** (cohorte de 1.000 personas; supone que los
+hipertensos controlados pasan a la tasa de los no hipertensos, por lo que es un límite superior):
+
+| Hipertensos controlados | Casos evitados (media) | IC 95 % | Reducción de casos |
+| --- | --- | --- | --- |
+| 20 % | 8,5 | [3; 15] | 5,6 % |
+| 40 % | 17,1 | [10; 26] | 11,3 % |
+| 60 % | 25,7 | [16; 36] | 16,9 % |
+
+El modelo reproduce la tasa observada (15,17 % simulada frente a 15,19 % en la S1). Se necesitan unos
+7 hipertensos controlados por caso evitado. La entrada más influyente es la tasa de CHD de los
+hipertensos (14,3 a 20,1 casos evitados dentro de su IC).
+
+**Escenario B, datos sintéticos de presión sistólica** (lognormal desplazada con la media, DE y asimetría
+de cada grupo):
+
+| n total | Cobertura IC 95 % de Welch | Potencia |
+| --- | --- | --- |
+| 4.240 (S1) | 95,1 % | 100 % |
+| 329 | 94,6 % | 93,7 % |
+| 132 | 94,7 % | 52,4 % |
+| 33 | 92,7 % | 9,8 % |
+
+La prueba de Welch de la S1 es confiable pese a la asimetría; con subgrupos pequeños la cobertura y la
+potencia caen.
 
 ## 6. Recomendaciones metodológicas para la Sumativa 3
 
@@ -73,4 +97,8 @@ Incluye las indicaciones del docente en la retroalimentación de la S1.
   según su estabilidad y robustez en la S2.
 - **Tabaquismo:** estimarlo controlando por edad (regresión logística múltiple), según la confusión
   observada en la S1 y los resultados por tramo de la S2.
+- **Efecto de la hipertensión:** estimarlo ajustado por edad y otros factores, porque es la entrada más
+  influyente del escenario Monte Carlo y hoy se apoya en una asociación bivariada.
+- **Subgrupos pequeños:** evitar conclusiones sobre grupos como diabetes (n = 109) o ACV previo (n = 25);
+  la simulación muestra que con n < 150 la potencia cae bajo 55 %.
 - TODO: recomendaciones que salgan de la robustez (observaciones influyentes, transformaciones de variables asimétricas).
