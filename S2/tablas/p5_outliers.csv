@@ -1,0 +1,5 @@
+Variable,n,Método atípicos,Límite inf.,Límite sup.,n atípicos,% atípicos,Máximo,Media,Media sin atípicos,Δ % sin atípicos,Media sin 5 influyentes,Δ % sin 5 influyentes,Media recortada 5 %,Δ % recortada,Mediana,Δ % mediana
+Edad (años),4240,IQR (Tukey),21.0,77.0,0,0.0,70.0,49.58,49.58,0.0,49.557,-0.047,49.441,-0.28,49.0,-1.17
+Presión sistólica (mmHg),4240,IQR (Tukey),76.5,184.5,126,2.972,295.0,132.355,130.305,-1.548,132.212,-0.108,130.904,-1.096,128.0,-3.29
+Colesterol total (mg/dL),4190,IQR (Tukey),120.5,348.5,56,1.337,696.0,236.7,234.871,-0.772,236.349,-0.148,235.17,-0.646,234.0,-1.14
+Glucosa (mg/dL),3852,IQR (Tukey),47.0,111.0,188,4.881,394.0,81.964,78.489,-4.24,81.573,-0.476,79.439,-3.081,78.0,-4.836

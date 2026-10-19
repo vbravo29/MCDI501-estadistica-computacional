@@ -1,0 +1,13 @@
+Resultado S1,Valor S1,Pruebas de robustez,Rango alternativo,Cambio máx. %,¿Cambia la decisión?,Clasificación
+Media de Edad (años),49.58,"Sin atípicos, sin 5 influyentes, media recortada 5 %",49.44 – 49.58,0.28,No aplica,Robusto
+Media de Presión sistólica (mmHg),132.355,"Sin atípicos, sin 5 influyentes, media recortada 5 %",130.31 – 132.21,1.548,No aplica,Robusto
+Media de Colesterol total (mg/dL),236.7,"Sin atípicos, sin 5 influyentes, media recortada 5 %",234.87 – 236.35,0.772,No aplica,Robusto
+Media de Glucosa (mg/dL),81.964,"Sin atípicos, sin 5 influyentes, media recortada 5 %",78.49 – 81.57,4.24,No aplica,Robusto
+Diferencia CHD − sin CHD de Presión sistólica (mmHg),13.281,"Sin atípicos, sin 5 influyentes, Yuen, Mood, ruido δ = 10 %",9.66 – 13.28,27.235,No,Requiere cautela
+Diferencia CHD − sin CHD de Glucosa (mg/dL),8.329,"Sin atípicos, sin 5 influyentes, Yuen, Mood, imputaciones",0.83 – 8.33,90.002,Sí,Sensible
+"Tabaquismo y CHD: no asociación (χ², p = 0,221)",0.221,"Permutación, Fisher, ajuste por edad (CMH y permutación estratificada)",p = 2.3e-05 (CMH),,Sí,Sensible
+ρ de Spearman Presión sistólica (mmHg) – Presión diastólica (mmHg),0.778,"Pearson, sin atípicos, ruido δ = 10 %",0.755 – 0.784,2.963,No,Robusto
+ρ de Spearman Edad (años) – Presión sistólica (mmHg),0.391,"Pearson, sin atípicos, ruido δ = 10 %",0.365 – 0.394,6.672,No,Robusto
+ρ de Spearman IMC (kg/m²) – Presión diastólica (mmHg),0.375,"Pearson, sin atípicos, ruido δ = 10 %",0.332 – 0.377,11.392,No,Requiere cautela
+Diferencia CHD − sin CHD de cigarrillos/día (imputación con 20),1.86,Excluir los 29 imputados,1.92,2.992,No,Robusto
+IC t de la media de glucosa (supuesto de normalidad),95.0,"Cobertura con datos sintéticos (empírica, lognormal, contaminada)",cobertura 88.2 % (n = 50) – 95.1 % (n = 3.852),0.105,No (con el n de la S1),Robusto

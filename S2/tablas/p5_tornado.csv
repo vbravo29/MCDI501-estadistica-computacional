@@ -1,0 +1,12 @@
+Resultado,Decisión,bajo,alto,valor,p,Impacto máx. %
+Diferencia de Presión sistólica (mmHg),Yuen (medias recortadas 5 %),13.1465,13.2815,13.1465,0.0,1.0159
+Diferencia de Presión sistólica (mmHg),"Ruido de medición δ = 10 % (P2,5–P97,5)",13.0976,13.4668,,,1.3957
+Diferencia de Presión sistólica (mmHg),sin 5 más influyentes,12.4663,13.2815,12.4663,0.0,6.1378
+Diferencia de Presión sistólica (mmHg),Mood (medianas),12.0,13.2815,12.0,0.0,9.6486
+Diferencia de Presión sistólica (mmHg),sin atípicos de Tukey,9.6643,13.2815,9.6643,0.0,27.2349
+Diferencia de Glucosa (mg/dL),Imputación por mediana según diabetes,7.8971,8.3292,7.8971,0.0,5.1872
+Diferencia de Glucosa (mg/dL),Imputación por mediana global,7.7263,8.3292,7.7263,0.0,7.2379
+Diferencia de Glucosa (mg/dL),sin 5 más influyentes,6.0067,8.3292,6.0067,0.0,27.8841
+Diferencia de Glucosa (mg/dL),Yuen (medias recortadas 5 %),3.3376,8.3292,3.3376,0.0002,59.9283
+Diferencia de Glucosa (mg/dL),Mood (medianas),1.0,8.3292,1.0,0.0708,87.994
+Diferencia de Glucosa (mg/dL),sin atípicos de Tukey,0.8328,8.3292,0.8328,0.1157,90.0018
