@@ -16,7 +16,7 @@ Fuente: `01_bootstrap_ic.ipynb` y `05_robustez.ipynb`.
 | Presión sistólica media | [131,69; 133,02] | [131,70; 133,02] | Baja (cambio máximo 1,55 %) | 132,35 mmHg; IC BCa [131,70; 133,02] |
 | Colesterol total medio | [235,35; 238,05] | [235,36; 238,05] | Baja (cambio máximo 0,77 %) | 236,70 mg/dL; IC BCa [235,36; 238,05] |
 | Proporción de CHD | [14,14 %; 16,30 %] | [14,15 %; 16,27 %] | No evaluable mediante extremos continuos | 15,19 %; IC BCa [14,15 %; 16,27 %] |
-| Diferencia de presión sistólica (CHD − sin CHD) | [11,11; 15,45] | No calculado en el bloque bootstrap | Moderada: baja 27,2 % sin atípicos, pero mantiene significación | 13,28 mmHg; informar además 9,66 mmHg sin atípicos |
+| Diferencia de presión sistólica (CHD − sin CHD) | [11,11; 15,45] | [11,14; 15,60] | Moderada: baja 27,2 % sin atípicos, pero mantiene significación | 13,28 mmHg; informar además 9,66 mmHg sin atípicos |
 | Diferencia de glucosa (CHD − sin CHD) | [4,95; 11,71] | [5,32; 12,16] | Alta: baja 90,0 % sin atípicos y deja de ser significativa | 8,33 mg/dL como estimación descriptiva; interpretar con cautela |
 
 Tasas de CHD por tramo de edad (fumadores − no fumadores), IC bootstrap 95 %:
