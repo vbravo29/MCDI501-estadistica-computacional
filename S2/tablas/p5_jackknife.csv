@@ -1,0 +1,5 @@
+Variable,n,Media,EE clásico (s/√n),EE jackknife,Sesgo jackknife,Aceleración a,Asimetría muestral,Máx. |cambio| al quitar 1 obs.
+Edad (años),4240,49.5802,0.1317,0.1317,0.0,0.0006,0.2288,0.0048
+Presión sistólica (mmHg),4240,132.3546,0.3384,0.3384,0.0,0.0029,1.1449,0.0384
+Colesterol total (mg/dL),4190,236.6995,0.6889,0.6889,0.0,0.0022,0.8716,0.1096
+Glucosa (mg/dL),3852,81.9637,0.386,0.386,0.0,0.0167,6.2125,0.081

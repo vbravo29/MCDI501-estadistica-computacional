@@ -1,0 +1,9 @@
+Resultado,δ,Valor original,Media perturbada,DE perturbada,"P2,5","P97,5",Δ % media vs original,"Δ % máx. (P2,5 o P97,5)"
+Diferencia PAS (CHD − sin CHD),0.05,13.2815,13.2812,0.0476,13.1876,13.374,-0.0022,0.707
+ρ Presión sistólica (mmHg) – Presión diastólica (mmHg),0.05,0.7776,0.7749,0.0009,0.7732,0.7766,-0.3519,0.5728
+ρ Edad (años) – Presión sistólica (mmHg),0.05,0.391,0.3898,0.0011,0.3875,0.392,-0.3102,0.8899
+ρ IMC (kg/m²) – Presión diastólica (mmHg),0.05,0.3747,0.3737,0.0012,0.3714,0.3761,-0.2762,0.907
+Diferencia PAS (CHD − sin CHD),0.1,13.2815,13.2804,0.0942,13.0976,13.4668,-0.0081,1.3957
+ρ Presión sistólica (mmHg) – Presión diastólica (mmHg),0.1,0.7776,0.7669,0.0017,0.7635,0.7703,-1.3724,1.8095
+ρ Edad (años) – Presión sistólica (mmHg),0.1,0.391,0.3865,0.0023,0.382,0.3909,-1.1434,2.2923
+ρ IMC (kg/m²) – Presión diastólica (mmHg),0.1,0.3747,0.3703,0.0023,0.3657,0.3749,-1.1824,2.4118

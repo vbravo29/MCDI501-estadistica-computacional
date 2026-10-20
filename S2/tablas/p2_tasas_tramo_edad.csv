@@ -1,0 +1,4 @@
+Tramo,n_fumadores,n_no_fumadores,Tasa_fumadores_%,Tasa_no_fumadores_%,Dif_pp,IC95_BCa_inf_pp,IC95_BCa_sup_pp,Incluye_cero
+≤ 45,958,631,8.35,4.12,4.23,1.82,6.54,False
+46-55,721,758,18.59,13.06,5.52,1.84,9.16,False
+> 55,416,756,28.61,24.6,4.0,-1.24,9.39,True

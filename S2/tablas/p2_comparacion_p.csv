@@ -1,0 +1,5 @@
+Prueba,Estadístico observado,Prueba paramétrica S1,p paramétrico,p permutación,EE Monte Carlo,p SciPy,Permutaciones ≥ observado,Decisión paramétrica,Decisión permutación,¿Concuerdan?
+PAS según CHD (diferencia de medias),13.28 mmHg,t de Welch,1.2455221511767628e-30,9.999000099990002e-05,9.999000099990002e-05,0.00019998000199980003,0,Se rechaza H₀,Se rechaza H₀,Sí
+PAS según CHD (t de Welch),t = 12.01,t de Welch,1.2455221511767628e-30,9.999000099990002e-05,9.999000099990002e-05,,0,Se rechaza H₀,Se rechaza H₀,Sí
+Tabaquismo y CHD (diferencia de tasas),1.40 pp,χ² con Yates,0.2211021442164888,0.21027897210278973,0.004075067189558767,0.21677832216778323,2102,No se rechaza H₀,No se rechaza H₀,Sí
+"Tabaquismo y CHD, estratificada por edad",4.64 pp,— (CMH como referencia),2.2871551210612573e-05,9.999000099990002e-05,9.999000099990002e-05,,0,Se rechaza H₀,Se rechaza H₀,Sí

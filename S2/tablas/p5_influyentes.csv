@@ -1,0 +1,31 @@
+Estimador,Ranking,Fila,Valor,TenYearCHD,Cambio al excluir,Atípico Tukey
+Media de Edad (años),1,1624.0,70.0,1,-0.0048,False
+Media de Edad (años),2,3137.0,70.0,0,-0.0048,False
+Media de Edad (años),3,4100.0,69.0,1,-0.0046,False
+Media de Edad (años),4,3674.0,69.0,0,-0.0046,False
+Media de Edad (años),5,3278.0,69.0,0,-0.0046,False
+Media de Presión sistólica (mmHg),1,481.0,295.0,1,-0.0384,True
+Media de Presión sistólica (mmHg),2,3489.0,248.0,1,-0.0273,True
+Media de Presión sistólica (mmHg),3,864.0,244.0,1,-0.0263,True
+Media de Presión sistólica (mmHg),4,1189.0,243.0,0,-0.0261,True
+Media de Presión sistólica (mmHg),5,2091.0,235.0,1,-0.0242,True
+Media de Colesterol total (mg/dL),1,3160.0,696.0,0,-0.1096,True
+Media de Colesterol total (mg/dL),2,1111.0,600.0,1,-0.0867,True
+Media de Colesterol total (mg/dL),3,194.0,464.0,1,-0.0543,True
+Media de Colesterol total (mg/dL),4,3474.0,453.0,0,-0.0516,True
+Media de Colesterol total (mg/dL),5,543.0,439.0,1,-0.0483,True
+Media de Glucosa (mg/dL),1,2893.0,394.0,1,-0.081,True
+Media de Glucosa (mg/dL),2,2909.0,394.0,1,-0.081,True
+Media de Glucosa (mg/dL),3,2406.0,386.0,0,-0.0789,True
+Media de Glucosa (mg/dL),4,3971.0,370.0,0,-0.0748,True
+Media de Glucosa (mg/dL),5,3844.0,368.0,1,-0.0743,True
+Diferencia CHD − sin CHD de Presión sistólica (mmHg),1,,295.0,1,-0.2354,True
+Diferencia CHD − sin CHD de Presión sistólica (mmHg),2,,248.0,1,-0.1623,True
+Diferencia CHD − sin CHD de Presión sistólica (mmHg),3,,244.0,1,-0.1561,True
+Diferencia CHD − sin CHD de Presión sistólica (mmHg),4,,235.0,1,-0.1421,True
+Diferencia CHD − sin CHD de Presión sistólica (mmHg),5,,217.0,1,-0.1141,True
+Diferencia CHD − sin CHD de Glucosa (mg/dL),1,,394.0,1,-0.5143,True
+Diferencia CHD − sin CHD de Glucosa (mg/dL),2,,394.0,1,-0.5143,True
+Diferencia CHD − sin CHD de Glucosa (mg/dL),3,,368.0,1,-0.4705,True
+Diferencia CHD − sin CHD de Glucosa (mg/dL),4,,332.0,1,-0.4098,True
+Diferencia CHD − sin CHD de Glucosa (mg/dL),5,,325.0,1,-0.398,True

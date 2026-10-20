@@ -1,0 +1,4 @@
+Versión,n,Media,DE,Amplitud IC 95 % media,Dif. CHD − sin CHD,IC dif. inf.,IC dif. sup.,p Welch,Δ % dif. vs S1
+Casos disponibles (S1),3852,81.9637,23.9543,1.5134,8.3292,4.9508,11.7075,0.0,0.0
+Imputación por mediana global,4240,81.6009,22.8603,1.3766,7.7263,4.6045,10.8481,0.0,-7.2379
+Imputación por mediana según diabetes,4240,81.6642,22.9428,1.3815,7.8971,4.7656,11.0286,0.0,-5.1872

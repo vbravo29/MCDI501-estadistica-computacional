@@ -1,0 +1,5 @@
+Par,ρ S1,n,n sin atípicos,Spearman todos,Pearson todos,Spearman sin atípicos,Pearson sin atípicos,Pearson − Spearman,Δ Spearman sin atípicos,Δ Pearson sin atípicos
+Presión sistólica (mmHg) – Presión diastólica (mmHg),0.78,4240,4082,0.7776,0.784,0.7592,0.7546,0.0063,-0.0184,-0.0294
+Edad (años) – Presión sistólica (mmHg),0.39,4240,4114,0.391,0.3941,0.3649,0.3653,0.0031,-0.0261,-0.0287
+IMC (kg/m²) – Presión diastólica (mmHg),0.37,4221,4049,0.3747,0.3774,0.3465,0.3321,0.0026,-0.0282,-0.0453
+Colesterol total (mg/dL) – Glucosa (mg/dL),,3842,3611,0.0299,0.0465,0.0174,0.024,0.0166,-0.0125,-0.0226
