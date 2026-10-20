@@ -38,7 +38,10 @@ S2/                        Sumativa 2: simulación y remuestreo (validación de 
   03_correlaciones.ipynb       parte 3: estabilidad de correlaciones con bootstrap
   04_montecarlo.ipynb          parte 4: simulación Monte Carlo con parámetros de la S1
   05_robustez.ipynb            parte 5: jackknife, outliers y supuestos
+  notebook.ipynb               notebook completo (une las cinco partes en el orden del informe)
   resultados_validados.md      parte 6: resultados validados para la Sumativa 3
+  informe-sumativa-2.docx      informe técnico editable
+  informe-sumativa-2.pdf       informe técnico entregado (exportado desde el .docx)
   figuras/                     gráficos generados por los notebooks (pX_figN_descripcion.png)
   tablas/                      tablas resumen en CSV (pX_descripcion.csv)
 ```
