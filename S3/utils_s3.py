@@ -11,8 +11,10 @@ from dataclasses import dataclass
 from pathlib import Path
 import warnings
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import statsmodels.api as sm
 from scipy.stats import jarque_bera
 from sklearn.metrics import (
@@ -29,9 +31,80 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 
 SEMILLA = 42
+SEED = SEMILLA
+B = 10_000
+TEST_SIZE = 0.30
+ALPHA = 0.05
 OBJETIVO = "TenYearCHD"
 RAIZ = Path(__file__).resolve().parents[1]
 RUTA_DATOS = RAIZ / "data" / "framingham.csv"
+DATA = RAIZ / "data"
+S3 = RAIZ / "S3"
+FIG = S3 / "figuras"
+TAB = S3 / "tablas"
+
+COLORES = {
+    "principal": "#4C72B0", "riesgo": "#C44E52", "neutro": "#8C8C8C",
+    "ic": "#55A868", "eliminacion": "#8C8C8C", "simple": "#DD8452",
+    "regresion": "#4C72B0",
+}
+NOMBRES = {
+    "age": "Edad (años)", "male": "Sexo masculino", "education": "Nivel educativo",
+    "currentSmoker": "Fumador actual", "cigsPerDay": "Cigarrillos por día",
+    "BPMeds": "Antihipertensivos", "prevalentStroke": "ACV previo",
+    "prevalentHyp": "Hipertensión", "diabetes": "Diabetes",
+    "totChol": "Colesterol total (mg/dL)", "sysBP": "Presión sistólica (mmHg)",
+    "diaBP": "Presión diastólica (mmHg)", "BMI": "IMC (kg/m²)",
+    "heartRate": "Frecuencia cardíaca (lpm)", "glucose": "Glucosa (mg/dL)",
+}
+NUMERICAS = ["age", "cigsPerDay", "totChol", "sysBP", "diaBP", "BMI", "heartRate", "glucose"]
+BINARIAS = ["male", "currentSmoker", "BPMeds", "prevalentStroke", "prevalentHyp", "diabetes"]
+ORDINALES = ["education"]
+PREDICTORES = NUMERICAS + BINARIAS + ORDINALES
+
+HALLAZGOS = {
+    "S1": {
+        "n": 4240, "tasa_chd_%": 15.19,
+        "faltantes": {
+            "glucose": (388, 9.15), "education": (105, 2.48), "BPMeds": (53, 1.25),
+            "totChol": (50, 1.18), "cigsPerDay": (29, 0.68), "BMI": (19, 0.45),
+            "heartRate": (1, 0.02),
+        },
+        "filas_con_faltantes": (582, 13.7),
+        "cigsPerDay": "29 faltantes, todos en fumadores",
+        "outliers": "Valores clínicos extremos conservados en S1",
+        "diferencias_g": {
+            "age": 0.64, "sysBP": 0.62, "diaBP": 0.41, "glucose": 0.35,
+            "totChol": 0.23, "BMI": 0.21, "cigsPerDay": 0.16, "heartRate": 0.06,
+        },
+        "tasas_chd_%": {
+            "hombres": 18.8, "mujeres": 12.4, "hipertension": 24.7,
+            "sin_hipertension": 10.9, "diabetes": 36.7, "sin_diabetes": 14.6,
+            "fumadores": 15.9, "no_fumadores": 14.5,
+        },
+    },
+    "S2": {
+        "correlaciones_estables": {
+            ("sysBP", "diaBP"): (0.778, 0.763, 0.791),
+            ("age", "sysBP"): (0.391, 0.365, 0.417),
+            ("BMI", "diaBP"): (0.375, 0.348, 0.401),
+        },
+        "correlaciones_inestables": {("totChol", "glucose"): (0.030, -0.002, 0.061)},
+        "ic_bca_dif_sysBP": (11.14, 15.60), "ic_bca_dif_glucose": (5.32, 12.16),
+        "glucosa_sin_atipicos": "La diferencia pierde significación sin atípicos",
+        "glucosa_segun_diabetes": "Mediana 145 mg/dL en diabéticos y 78 en no diabéticos",
+        "imputacion_glucosa": "La mediana reduce ligeramente la dispersión",
+        "tabaquismo_ajustado_edad": "Diferencia MH 4,64 pp; p < 0,001",
+        "vif_sysBP_diaBP": (3.11, 2.85),
+        "recomendaciones": [
+            "usar métricas para la clase minoritaria",
+            "ajustar la imputación solo con entrenamiento",
+            "mantener presión sistólica frente a la colinealidad",
+            "ajustar tabaquismo e hipertensión por edad",
+            "evitar conclusiones firmes en subgrupos pequeños",
+        ],
+    },
+}
 
 NUMERICAS_CON_FALTANTES = ["cigsPerDay", "totChol", "BMI", "heartRate", "glucose"]
 CATEGORICAS_CON_FALTANTES = ["education", "BPMeds"]
@@ -399,3 +472,76 @@ def preparar_particiones_por_estrategia(
         "regresion": (train_reg, test_reg),
     }
     return particiones, diagnosticos, conteos_train, conteos_test
+
+
+# Interfaz común consumida por los notebooks 02 y 03 del trabajo grupal.
+def configurar_graficos() -> None:
+    sns.set_theme(style="whitegrid", context="notebook")
+    pd.set_option("display.float_format", lambda x: f"{x:,.4f}")
+
+
+def guardar_figura(nombre: str) -> None:
+    FIG.mkdir(exist_ok=True)
+    plt.tight_layout()
+    plt.savefig(FIG / f"{nombre}.png", dpi=200, bbox_inches="tight")
+    plt.show()
+
+
+def guardar_tabla(tabla: pd.DataFrame, nombre: str) -> pd.DataFrame:
+    TAB.mkdir(exist_ok=True)
+    tabla.to_csv(TAB / f"{nombre}.csv", index=True)
+    return tabla
+
+
+def particionar(df: pd.DataFrame):
+    """Partición grupal 70/30 estratificada, previa a toda imputación."""
+    return train_test_split(
+        df, test_size=TEST_SIZE, stratify=df[OBJETIVO], random_state=SEED
+    )
+
+
+def imputar(train: pd.DataFrame, test: pd.DataFrame, estrategia: str):
+    """Aplica una estrategia ajustada solo con el conjunto de entrenamiento."""
+    if estrategia == "eliminacion":
+        return train.dropna().copy(), test.dropna().copy()
+    if estrategia == "simple":
+        train_i, valores = imputar_simple(train, devolver_valores=True)
+        return train_i, imputar_simple(test, valores=valores)
+    if estrategia == "regresion":
+        train_i, estado, _, _ = imputar_regresion(train, devolver_detalle=True)
+        return train_i, imputar_regresion(test, estado=estado)
+    raise ValueError(f"Estrategia desconocida: {estrategia}")
+
+
+def preparar_modelo(train: pd.DataFrame, test: pd.DataFrame, variables, recortar=None):
+    """Prepara matrices para los modelos grupales sin usar información de prueba."""
+    variables = list(variables)
+    train, test = train.copy(), test.copy()
+    for variable, (p_inf, p_sup) in (recortar or {}).items():
+        inf, sup = np.percentile(train[variable].dropna(), [p_inf, p_sup])
+        train[variable] = train[variable].clip(inf, sup)
+        test[variable] = test[variable].clip(inf, sup)
+
+    X_train = train[variables].astype(float).copy()
+    X_test = test[variables].astype(float).copy()
+    numericas = [v for v in variables if v in NUMERICAS]
+    if numericas:
+        media = X_train[numericas].mean()
+        de = X_train[numericas].std(ddof=0).replace(0, 1)
+        X_train[numericas] = (X_train[numericas] - media) / de
+        X_test[numericas] = (X_test[numericas] - media) / de
+
+    if "education" in variables:
+        X_train = pd.get_dummies(
+            X_train, columns=["education"], prefix="edu", drop_first=True, dtype=float
+        )
+        X_test = pd.get_dummies(
+            X_test, columns=["education"], prefix="edu", drop_first=True, dtype=float
+        ).reindex(columns=X_train.columns, fill_value=0.0)
+
+    return (
+        X_train,
+        X_test,
+        train[OBJETIVO].astype(int),
+        test[OBJETIVO].astype(int),
+    )
