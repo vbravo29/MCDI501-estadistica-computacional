@@ -545,3 +545,30 @@ def preparar_modelo(train: pd.DataFrame, test: pd.DataFrame, variables, recortar
         train[OBJETIVO].astype(int),
         test[OBJETIVO].astype(int),
     )
+
+
+def pesos_clases(y: pd.Series) -> pd.Series:
+    """Pesos balanceados por clase: n / (2 · n_clase). Con 15,19 % de casos dan ≈ 3,29 a CHD y 0,59 al resto.
+
+    Los pesos suman n, así que la escala de la verosimilitud no cambia (sugerencia del profesor en la S2).
+    """
+    y = pd.Series(y).astype(int)
+    conteos = y.value_counts()
+    return y.map({c: len(y) / (2 * conteos[c]) for c in conteos.index}).astype(float)
+
+
+def ajustar_logit(X_train: pd.DataFrame, y_train: pd.Series, ponderar: bool = True, robusto: bool = True):
+    """Regresión logística (GLM binomial) con o sin ponderación de clases.
+
+    Con ponderación se usan errores estándar robustos (HC0), porque los pesos no son frecuencias. Para un
+    bootstrap con miles de remuestras conviene `robusto=False`, que es más rápido y no cambia los coeficientes.
+    """
+    X = sm.add_constant(X_train, has_constant="add")
+    pesos = pesos_clases(y_train).values if ponderar else None
+    modelo = sm.GLM(y_train.astype(int), X, family=sm.families.Binomial(), var_weights=pesos)
+    return modelo.fit(cov_type="HC0") if robusto else modelo.fit()
+
+
+def predecir(modelo, X: pd.DataFrame) -> pd.Series:
+    """Probabilidades predichas por un modelo de `ajustar_logit()`."""
+    return modelo.predict(sm.add_constant(X, has_constant="add"))

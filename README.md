@@ -50,6 +50,8 @@ S3/                        Sumativa 3: cierre del proyecto (imputación y regres
   02_modelos_logisticos.ipynb  parte 2: tres modelos, desempeño, modelo final y diagnóstico
   03_bootstrap.ipynb           parte 3: estabilidad de coeficientes y odds ratios con bootstrap
   04_impacto_imputacion.ipynb  parte 4: modelo final con las tres estrategias de imputación
+  config_modelo_final.json     variables, pesos de clase y umbral del modelo final (lo genera la parte 2; lo usan las partes 3 y 4)
+  datos/                       datasets con las tres estrategias de tratamiento de faltantes
   informe-sumativa-3.docx      informe final integrado (máximo 10 páginas)
   figuras/                     gráficos generados por los notebooks
   tablas/                      tablas resumen en CSV

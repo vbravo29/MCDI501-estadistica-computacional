@@ -1,0 +1,4 @@
+tratamiento,AUC prueba,OR age,OR male,OR sysBP,OR prevalentHyp,OR cigsPerDay,OR glucose
+sin recorte (S1),0.708,1.922,1.486,1.334,1.278,1.324,1.185
+glucosa y colesterol al P99,0.706,1.92,1.487,1.336,1.278,1.324,1.159
+"todas las continuas al P0,5-P99,5",0.708,1.927,1.48,1.336,1.268,1.331,1.174

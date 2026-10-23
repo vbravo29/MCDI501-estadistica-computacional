@@ -1,0 +1,5 @@
+modelo,variables,AUC entrenamiento,AUC CV (media),AUC CV (DE),AUC prueba
+Modelo 1 (S1 y S2),6,0.739,0.737,0.013,0.708
+Modelo 2 (stepwise AIC),8,0.744,0.742,0.011,0.7
+Modelo 3 (reducido BIC),5,0.738,0.737,0.012,0.705
+Modelo 1 sin ponderar,6,0.739,0.737,0.013,0.709
