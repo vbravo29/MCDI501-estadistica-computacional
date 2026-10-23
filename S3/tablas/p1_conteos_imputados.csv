@@ -1,0 +1,8 @@
+variable,n_imputados,metodo,n_por_regresion,n_respaldo_mediana
+education,105,moda,,
+BPMeds,53,moda,,
+cigsPerDay,29,regresion lineal multiple,29.0,0.0
+totChol,50,regresion lineal multiple,50.0,0.0
+BMI,19,regresion lineal multiple,19.0,0.0
+heartRate,1,regresion lineal multiple,1.0,0.0
+glucose,388,regresion lineal multiple,388.0,0.0
