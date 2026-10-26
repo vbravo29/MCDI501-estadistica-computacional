@@ -1,0 +1,18 @@
+,con diastólica,sin diastólica,modelo 1
+IMC (kg/m²),1.24,1.2,
+Antihipertensivos,1.09,1.09,
+Edad (años),1.42,1.37,1.24
+Cigarrillos por día,2.73,2.73,1.16
+Fumador actual,2.6,2.59,
+Presión diastólica (mmHg),2.97,,
+Diabetes,1.67,1.67,
+Nivel educativo 2.0,1.27,1.27,
+Nivel educativo 3.0,1.21,1.2,
+Nivel educativo 4.0,1.17,1.17,
+Glucosa (mg/dL),1.71,1.69,1.03
+Frecuencia cardíaca (lpm),1.1,1.09,
+Sexo masculino,1.22,1.2,1.12
+Hipertensión,2.05,2.01,1.96
+ACV previo,1.02,1.02,
+Presión sistólica (mmHg),3.78,2.25,2.13
+Colesterol total (mg/dL),1.11,1.11,

@@ -1,0 +1,6 @@
+,variables,k,AIC,BIC
+0,"age, male, cigsPerDay, BPMeds, prevalentStroke, totChol, sysBP, glucose",8,2233.2,2287.2
+1,"age, male, cigsPerDay, BPMeds, prevalentStroke, prevalentHyp, totChol, sysBP, glucose",9,2233.8,2293.7
+2,"age, male, education, cigsPerDay, BPMeds, prevalentStroke, totChol, sysBP, glucose",11,2234.2,2306.1
+3,"age, male, cigsPerDay, BPMeds, prevalentStroke, totChol, sysBP, heartRate, glucose",9,2234.4,2294.3
+4,"age, male, education, cigsPerDay, BPMeds, prevalentStroke, prevalentHyp, totChol, sysBP, glucose",12,2234.7,2312.7

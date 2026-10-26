@@ -1,0 +1,9 @@
+modelo,conjunto,accuracy,precision,recall,especificidad,F1,AUC,TN,FP,FN,TP
+Modelo 1 (S1 y S2),entrenamiento,0.675,0.274,0.69,0.673,0.392,0.739,1693,824,140,311
+Modelo 1 (S1 y S2),prueba,0.681,0.267,0.632,0.69,0.375,0.708,744,335,71,122
+Modelo 2 (stepwise AIC),entrenamiento,0.678,0.276,0.69,0.676,0.394,0.744,1701,816,140,311
+Modelo 2 (stepwise AIC),prueba,0.671,0.256,0.617,0.68,0.362,0.7,734,345,74,119
+Modelo 3 (reducido BIC),entrenamiento,0.673,0.271,0.683,0.671,0.388,0.738,1690,827,143,308
+Modelo 3 (reducido BIC),prueba,0.678,0.264,0.627,0.687,0.371,0.705,741,338,72,121
+Modelo 1 sin ponderar,entrenamiento,0.855,0.708,0.075,0.994,0.136,0.739,2503,14,417,34
+Modelo 1 sin ponderar,prueba,0.847,0.48,0.062,0.988,0.11,0.709,1066,13,181,12

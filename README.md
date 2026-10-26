@@ -44,6 +44,20 @@ S2/                        Sumativa 2: simulación y remuestreo (validación de 
   informe-sumativa-2.pdf       informe técnico entregado (exportado desde el .docx)
   figuras/                     gráficos generados por los notebooks (pX_figN_descripcion.png)
   tablas/                      tablas resumen en CSV (pX_descripcion.csv)
+S3/                        Sumativa 3: cierre del proyecto (imputación y regresión logística)
+  utils_s3.py                  semilla, partición 70/30, estrategias de imputación, preparación y hallazgos de S1 y S2
+  01_imputacion.ipynb          parte 1: faltantes de la S1, imputación por regresión y comparación de estrategias
+  02_modelos_logisticos.ipynb  parte 2: tres modelos, desempeño, modelo final y diagnóstico
+  03_bootstrap.ipynb           parte 3: estabilidad de coeficientes y odds ratios con bootstrap
+  04_impacto_imputacion.ipynb  parte 4: modelo final con las tres estrategias de imputación
+  notebook-sumativa-3.ipynb    notebook maestro (une las cuatro partes en el orden del informe)
+  config_modelo_final.json     variables, pesos de clase y umbral del modelo final (lo genera la parte 2; lo usan las partes 3 y 4)
+  datos/                       datasets con las tres estrategias de tratamiento de faltantes
+  informe-sumativa-3.docx      informe final integrado (máximo 10 páginas)
+  informe-sumativa-3.pdf       informe entregado (exportado desde el .docx)
+  presentacion-sumativa-3.pptx diapositivas del video, con el guion en las notas del orador
+  figuras/                     gráficos generados por los notebooks
+  tablas/                      tablas resumen en CSV
 ```
 
 Fuente de los datos: [Kaggle - Framingham Heart Study](https://www.kaggle.com/datasets/dileep070/heart-disease-prediction-using-logistic-regression).
@@ -52,6 +66,8 @@ Fuente de los datos: [Kaggle - Framingham Heart Study](https://www.kaggle.com/da
 
 - Sumativa 1: informe `S1/informe-sumativa-1.pdf` y notebook `S1/notebook.ipynb`.
 - Sumativa 2: informe PDF (máximo 7 páginas), notebook `S2/notebook.ipynb` y `S2/resultados_validados.md`.
+- Sumativa 3: informe PDF (máximo 10 páginas), notebook maestro `S3/notebook-sumativa-3.ipynb`, video de presentación
+  (10 minutos) y este repositorio con las tres sumativas.
 
 ## Ejecución
 
@@ -70,6 +86,11 @@ jupyter notebook
 **Sumativa 2.** Los notebooks de `S2/` se ejecutan desde esa carpeta y son independientes entre sí.
 Todos importan `utils_s2.py`, que fija la semilla 42 y B = 10.000, y verifican al inicio que los datos
 reproducen las cifras de la S1.
+
+**Sumativa 3.** Los notebooks de `S3/` se ejecutan desde esa carpeta y parten de los datos originales
+(`data/framingham.csv`). Todos usan `utils_s3.py`: la partición 70/30 estratificada se hace antes de imputar y
+los imputadores se ajustan solo con el conjunto de entrenamiento, para evitar fuga de información.
+`02_modelos_logisticos.ipynb` se ejecutó con Python 3.13; los demás notebooks de S3, con Python 3.10.
 
 Cada notebook debe ejecutarse completo desde el inicio (Restart & Run All).
 Los análisis que contienen valores faltantes usan casos disponibles e informan el tamaño

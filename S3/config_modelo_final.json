@@ -1,0 +1,20 @@
+{
+  "variables": [
+    "age",
+    "male",
+    "sysBP",
+    "prevalentHyp",
+    "cigsPerDay",
+    "glucose"
+  ],
+  "estrategia_imputacion": "regresion",
+  "recorte_outliers": null,
+  "ponderacion": {
+    "metodo": "n / (2 · n_clase), calculado en entrenamiento",
+    "casos": 3.2905,
+    "no_casos": 0.5896
+  },
+  "umbral": 0.5,
+  "ajuste": "utils_s3.ajustar_logit(X, y, ponderar=True)",
+  "fuente": "02_modelos_logisticos.ipynb"
+}
