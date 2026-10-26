@@ -201,7 +201,7 @@ def _ajustar_imputadores(datos_ajuste: pd.DataFrame):
     # El orden es intencional: cigsPerDay queda disponible como predictor de glucosa.
     for variable in NUMERICAS_CON_FALTANTES:
         predictores = PREDICTORES_IMPUTACION[variable]
-        # El ajuste usa exclusivamente valores originalmente observados tanto
+        # El ajuste usa solo valores originalmente observados, tanto
         # en la variable a imputar como en todos sus predictores.
         completos = datos_ajuste[[variable] + predictores].dropna()
         X = completos[predictores].astype(float)
@@ -339,7 +339,7 @@ def comparar_distribuciones(original: pd.DataFrame, datasets: dict[str, pd.DataF
 
 
 def comparar_correlaciones(datasets: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Recalcula exclusivamente las cinco correlaciones priorizadas en S2."""
+    """Recalcula solo las cinco correlaciones priorizadas en la S2."""
     pares = [
         ("sysBP", "diaBP"),
         ("age", "sysBP"),
